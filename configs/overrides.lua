@@ -44,6 +44,23 @@ M.treesitter = {
   incremental_selection = {
     enable = true,
   },
+  -- https://github.com/nvim-treesitter/nvim-treesitter-refactor/
+  refactor = {
+    highlight_definitions = {
+      enable = true,
+      -- Set to false if you have an `updatetime` of ~100.
+      clear_on_cursor_move = true,
+    },
+    highlight_current_scope = { enable = true },
+    smart_rename = {
+      enable = true,
+      -- Assign keymaps to false to disable them, e.g. `smart_rename = false`.
+      keymaps = {
+        -- smart_rename = "grr",
+      },
+    },
+  },
+
   -- https://github.com/andymass/vim-matchup
   matchup = {
     enable = true,

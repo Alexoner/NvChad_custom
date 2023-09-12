@@ -73,17 +73,8 @@ local plugins = {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {
-      refactor = {
-        highlight_definitions = {
-          enable = true,
-          -- Set to false if you have an `updatetime` of ~100.
-          clear_on_cursor_move = true,
-        },
-      },
-    },
     lazy = false,
-    enabled = false,
+    enabled = true,
   },
 
   {
@@ -99,6 +90,28 @@ local plugins = {
     lazy = false,
     enabled = false, -- TODO: matchup doesn't work yet.
   },
+
+  {
+    "mbbill/undotree",
+    config = function()
+      vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+    end,
+    -- keys = {
+    --   "<leader>u",
+    -- },
+    lazy = false,
+  },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  }
 
   -- To make a plugin not be loaded
   -- {
@@ -121,7 +134,7 @@ local plugins = {
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>lg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})  -- search file maching string
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
