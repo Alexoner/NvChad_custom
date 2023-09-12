@@ -71,9 +71,10 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>lg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 
 vim.keymap.set('n', '<C-p>', '<cmd>Telescope<cr>', {})
+vim.keymap.set('n', '<F4>', builtin.git_files, {})
 
 -- }
 
