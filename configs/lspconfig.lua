@@ -17,11 +17,11 @@ end
 -- lspconfig.pyright.setup { blabla}
 
 -- If generateing LSP config with custom tools, configure like this:
-local function custom_tool()
- local custom_tool_dir = vim.fs.find({ '.custom_tool' }, { upward = true, type = 'directory'})[1]
+local function bemol()
+ local bemol_dir = vim.fs.find({ '.bemol' }, { upward = true, type = 'directory'})[1]
  local ws_folders_lsp = {}
- if custom_tool_dir then
-  local file = io.open(custom_tool_dir .. '/ws_root_folders', 'r')
+ if bemol_dir then
+  local file = io.open(bemol_dir .. '/ws_root_folders', 'r')
   if file then
 
    for line in file:lines() do
@@ -38,7 +38,7 @@ local function custom_tool()
 end
 
 
--- Step 2: Call custom_tool() from your on_attach() function.
+-- Step 2: Call bemol() from your on_attach() function.
 local on_attach_jdtls = function(_, bufnr)
   on_attach(_, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
@@ -46,7 +46,7 @@ local on_attach_jdtls = function(_, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = '[G]oto [R]eference' })
 
 
-  custom_tool()
+  bemol()
 end
 
 -- Step 3: Make sure you pass on_attach to lspconfig.

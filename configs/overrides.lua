@@ -14,9 +14,11 @@ M.treesitter = {
     "markdown_inline",
     "cpp",
     "python",
+    "java",
     "go",
     "rust",
   },
+  -- plugins and modules: https://github.com/nvim-treesitter/nvim-treesitter/wiki/Extra-modules-and-plugins
   indent = {
     enable = true,
     -- disable = {
@@ -42,9 +44,11 @@ M.treesitter = {
   incremental_selection = {
     enable = true,
   },
+  -- https://github.com/andymass/vim-matchup
   matchup = {
     enable = true,
   },
+  -- https://github.com/hiphish/rainbow-delimiters.nvim
   rainbow = {
     enable = true,
     -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
@@ -53,6 +57,10 @@ M.treesitter = {
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },
+  -- https://github.com/windwp/nvim-ts-autotag
+  autotag = {
+    enable = true,
+  }
 }
 
 M.mason = {
@@ -71,6 +79,10 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    -- java
+    "jdtls",
+
   },
 }
 

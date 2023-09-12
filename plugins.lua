@@ -47,6 +47,59 @@ local plugins = {
     end,
   },
 
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = require("custom.configs.nvim-treesitter-context"),
+    -- lazy = false,
+    keys = {
+      "<c-e>",
+      "<c-y>",
+    },
+  },
+
+  {
+    "hiphish/rainbow-delimiters.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    lazy = false,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-refactor",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      refactor = {
+        highlight_definitions = {
+          enable = true,
+          -- Set to false if you have an `updatetime` of ~100.
+          clear_on_cursor_move = true,
+        },
+      },
+    },
+    lazy = false,
+    enabled = false,
+  },
+
+  {
+    "andymass/vim-matchup",
+    -- keys = {
+    --   "%",
+    -- },
+    setup = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      vim.cmd('let g:loaded_matchit             = 1')
+      vim.cmd('let g:matchup_matchparen_enabled = 1')
+    end,
+    lazy = false,
+    enabled = false, -- TODO: matchup doesn't work yet.
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
@@ -75,7 +128,7 @@ vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 
 vim.keymap.set('n', '<C-p>', '<cmd>Telescope<cr>', {})
 vim.keymap.set('n', '<F4>', builtin.git_files, {})
-
 -- }
+
 
 return plugins
