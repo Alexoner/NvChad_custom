@@ -131,16 +131,7 @@ local plugins = {
 }
 
 -- {  -- telescope
-
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})  -- search file maching string
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
-
-vim.keymap.set('n', '<C-p>', '<cmd>Telescope<cr>', {})
-vim.keymap.set('n', '<F4>', builtin.git_files, {})
+require("custom.configs.telescope")
 -- }
 
 
