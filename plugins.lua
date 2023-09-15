@@ -111,7 +111,27 @@ local plugins = {
         -- Configuration here, or leave empty to use defaults
       })
     end
-  }
+  },
+
+  {
+    "mfussenegger/nvim-dap",
+    lazy = true,
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    opts = {},
+    lazy = true,
+  },
+
+  {
+    "iamcco/markdown-preview.nvim",
+  },
+
+  {
+    "vim-test/vim-test",
+  },
 
   -- To make a plugin not be loaded
   -- {
