@@ -65,6 +65,7 @@ local plugins = {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
+    event = "VeryLazy",
     lazy = false,
   },
 
@@ -73,22 +74,24 @@ local plugins = {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
+    event = "VeryLazy",
     lazy = false,
     enabled = true,
   },
 
   {
     "andymass/vim-matchup",
-    -- keys = {
-    --   "%",
-    -- },
-    setup = function()
+    keys = {
+      "%",
+    },
+    event = "VeryLazy",
+    config = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
       vim.cmd('let g:loaded_matchit             = 1')
       vim.cmd('let g:matchup_matchparen_enabled = 1')
     end,
     lazy = false,
-    enabled = false, -- TODO: matchup doesn't work yet.
+    enabled = true,
   },
 
   {
@@ -110,7 +113,7 @@ local plugins = {
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
       })
-    end
+    end,
   },
 
   {
@@ -126,11 +129,16 @@ local plugins = {
   },
 
   {
-    "iamcco/markdown-preview.nvim",
+    "vim-test/vim-test",
   },
 
   {
-    "vim-test/vim-test",
+    "iamcco/markdown-preview.nvim",
+    event = "VeryLazy",
+    config = function()
+      vim.fn["mkdp#util#install"]()
+      vim.g.mkdp_auto_start = 1
+    end,
   },
 
   -- To make a plugin not be loaded

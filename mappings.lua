@@ -18,6 +18,7 @@ M.general = {
     ["<C-r>"] = {"<Esc>:redo<CR>a", "redo" , opts = { desc = "redo" }}, -- undo
   },
   v = {
+    ["H"] = {"<Nop>", "NOP, NO-OP", opts = { desc = "I hate default H behaviour" }},
     -- https://vim.fandom.com/wiki/Shifting_blocks_visually
     [">"] = {">gv", ">gv", "", opts = {}},
     ["<"] = {"<gv", "<gv", "", opts = {}},
