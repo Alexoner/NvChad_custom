@@ -141,6 +141,15 @@ local plugins = {
     end,
   },
 
+  {
+    "xiyaowong/telescope-emoji.nvim",
+    lazy=false,
+    config = function()
+      require("telescope").load_extension("emoji")
+      vim.keymap.set('n', '<leader>pe', ":Telescope emoji<CR>", { desc = 'pick emoji' })
+    end,
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
