@@ -5,8 +5,8 @@ local M = {}
 local highlights = require "custom.highlights"
 
 M.ui = {
-  theme = "solarized_dark",
-  theme_toggle = { "solarized_dark", "one_light" },
+  theme = "chadracula",
+  theme_toggle = { "chadracula", "one_light" },
 
   hl_override = highlights.override,
   hl_add = highlights.add,
@@ -21,6 +21,44 @@ M.plugins = "custom.plugins"
 
 -- check core.mappings for table structure
 M.mappings = require "custom.mappings"
+
+
+-- customize disabled plugins
+M.lazy_nvim = {
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "2html_plugin",
+        "tohtml",
+        "getscript",
+        "getscriptPlugin",
+        -- "gzip",
+        "logipat",
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "matchit",
+        -- "tar",
+        "tarPlugin",
+        "rrhelper",
+        "spellfile_plugin",
+        "vimball",
+        "vimballPlugin",
+        -- "zip",
+        -- "zipPlugin",
+        "tutor",
+        "rplugin",
+        "syntax",
+        "synmenu",
+        "optwin",
+        "compiler",
+        "bugreport",
+        "ftplugin",
+      },
+    },
+  }
+}
 
 require("custom.autocmds")
 
