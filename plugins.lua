@@ -149,6 +149,14 @@ local plugins = {
       vim.keymap.set('n', '<leader>pe', ":Telescope emoji<CR>", { desc = 'pick emoji' })
     end,
   },
+  {
+    "junegunn/vim-easy-align",
+    lazy=false,
+    config = function()
+      -- vim.keymap.set('n', ',a', "<Plug>(EasyAlign)", { desc = 'easy align' })
+      vim.keymap.set('v', ',a', "<Plug>(EasyAlign)", { desc = 'easy align' })
+    end,
+  },
 
   -- To make a plugin not be loaded
   -- {

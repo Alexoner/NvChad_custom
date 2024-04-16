@@ -134,6 +134,9 @@ M.nvimtree = {
       },
     },
   },
+  view = {
+    width = 50,
+  },
   -- on_attach = require(".nvim-tree").on_attach,  -- FIXME: import doesn't work, why?
   on_attach = on_attach_nvim_tree,
 }

@@ -6,7 +6,7 @@ M.general = {
     -- [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["H"] = {"<Nop>", "NOP, NO-OP", opts = { desc = "I hate default H behaviour" }},
     ["?"] = {":NvCheatsheet<CR>", "cheatsheet", opts = {}},
-
+    ["<A-o>"] = {"<Cmd>lua require'jdtls'.organize_imports()<CR>", "jdtls.organize_imports", opts = {}},
   },
   i = {
     -- universal INSERT MODE editting key mappings to be compatible with editors
