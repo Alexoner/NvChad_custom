@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "clangd", "pyright", "tsserver", "jsonls", "rust_analyzer", "gopls", "html", "cssls", "yamlls" }
+local servers = { "clangd", "pyright", "tsserver", "jsonls", "rust_analyzer", "gopls", "html", "cssls", "yamlls", "ruby_lsp"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -44,7 +44,7 @@ local on_attach_jdtls = function(_, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, desc = '[G]oto [D]efinition' })
   -- your other keymaps and the rest of your configuration here.
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = '[G]oto [R]eference' })
-
+  vim.keymap.set('n', '<A-o>', "<Cmd>lua require'jdtls'.organize_imports()<CR>", {})
 
   bemol()
 end
@@ -52,5 +52,9 @@ end
 -- Step 3: Make sure you pass on_attach to lspconfig.
 local server_name = 'jdtls' -- or whatever lsp you're using.
 lspconfig[server_name].setup {
+  on_attach = on_attach_jdtls,
+}
+
+lspconfig["kotlin_language_server"].setup {
   on_attach = on_attach_jdtls,
 }
