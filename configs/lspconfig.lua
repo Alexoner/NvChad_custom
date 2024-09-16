@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "clangd", "pyright", "tsserver", "jsonls", "rust_analyzer", "gopls", "html", "cssls", "yamlls", "ruby_lsp"}
+local servers = { "clangd", "pyright", "tsserver", "jsonls", "rust_analyzer", "gopls", "html", "cssls", "yamlls", "solargraph"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -36,6 +36,7 @@ local function bemol()
  end
 
 end
+bemol()
 
 
 -- Step 2: Call bemol() from your on_attach() function.
@@ -46,7 +47,7 @@ local on_attach_jdtls = function(_, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = '[G]oto [R]eference' })
   vim.keymap.set('n', '<A-o>', "<Cmd>lua require'jdtls'.organize_imports()<CR>", {})
 
-  bemol()
+  -- bemol()
 end
 
 -- Step 3: Make sure you pass on_attach to lspconfig.
@@ -58,3 +59,7 @@ lspconfig[server_name].setup {
 lspconfig["kotlin_language_server"].setup {
   on_attach = on_attach_jdtls,
 }
+
+-- lspconfig["ruby_lsp"].setup {
+--   on_attach = (function(_, bufnr) bemol() end);
+-- }
