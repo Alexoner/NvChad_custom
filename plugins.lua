@@ -157,6 +157,20 @@ local plugins = {
       vim.keymap.set('v', ',a', "<Plug>(EasyAlign)", { desc = 'easy align' })
     end,
   },
+  { -- code outline
+    'stevearc/aerial.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    lazy = false,
+    config = function()
+      -- code outline window for skimming and quick navigation
+      require("custom.configs.aerial")
+    end
+  },
 
   -- To make a plugin not be loaded
   -- {
@@ -175,9 +189,8 @@ local plugins = {
 
 }
 
--- {  -- telescope
+-- {  -- override telescope
 require("custom.configs.telescope")
 -- }
-
 
 return plugins
