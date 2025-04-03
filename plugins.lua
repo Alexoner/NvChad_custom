@@ -134,6 +134,8 @@ local plugins = {
 
   {
     "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
     event = "VeryLazy",
     config = function()
       vim.fn["mkdp#util#install"]()
