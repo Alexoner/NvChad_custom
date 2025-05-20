@@ -10,7 +10,7 @@ local plugins = {
     dependencies = {
       -- format & linting
       {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         config = function()
           require "custom.configs.null-ls"
         end,
@@ -173,6 +173,11 @@ local plugins = {
       require("custom.configs.aerial")
     end
   },
+  {
+    'rcarriga/nvim-notify',
+    config = function()
+    end,
+  }
 
   -- To make a plugin not be loaded
   -- {
@@ -191,7 +196,7 @@ local plugins = {
 
 }
 
--- {  -- override telescope
+-- {  -- override telescope here since telescope is loaded by NvChad internally
 require("custom.configs.telescope")
 -- }
 
