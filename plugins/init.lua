@@ -1,44 +1,32 @@
-local overrides = require("custom.configs.overrides")
+-- see: https://nvchad.com/docs/config/plugins
 
----@type NvPluginSpec[]
 local plugins = {
-
-  -- Override plugin definition options
-
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "nvimtools/none-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
-  },
-
-  -- override plugin configs
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason
-  },
-
+  -- { "folke/which-key.nvim",  enabled = false }, -- disable a default nvchad plugin
+  
+  -- this opts will extend the default opts 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
+    opts = { ensure_installed = {"python", "javascript", "java", "go", "rust", "cpp", "html", "css", "bash"} },
   },
 
+  -- If your opts uses a function call ex: require*, then make opts spec a function
+  -- Then modify the opts arg
   {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
+    "nvim-telescope/telescope.nvim",
+    opts = function(_, conf)
+      require("configs.telescope")
+      conf.defaults.mappings.i = {
+        ["<C-j>"] = require("telescope.actions").move_selection_next,
+        ["<Esc>"] = require("telescope.actions").close,
+      }
+
+     -- or 
+     -- table.insert(conf.defaults.mappings.i, your table)
+      return conf
+    end,
   },
 
-  -- Install a plugin
+  -- Install new plugins
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -52,7 +40,7 @@ local plugins = {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = require("custom.configs.nvim-treesitter-context"),
+    opts = require("configs.nvim-treesitter-context"),
     -- lazy = false,
     keys = {
       "<c-e>",
@@ -170,7 +158,7 @@ local plugins = {
     lazy = false,
     config = function()
       -- code outline window for skimming and quick navigation
-      require("custom.configs.aerial")
+      require("configs.aerial")
     end
   },
   {
@@ -179,25 +167,7 @@ local plugins = {
     end,
   }
 
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  -- {
-  --   "mg979/vim-visual-multi",
-  --   lazy = false,
-  -- }
-
-
 }
 
--- {  -- override telescope here since telescope is loaded by NvChad internally
-require("custom.configs.telescope")
--- }
 
 return plugins
